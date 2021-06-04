@@ -6,8 +6,16 @@ import MoviesCardList from '../MovieCardList/MovieCardList';
 function Movies(props) {
   return (
   <section className="movies">
-    <SearchForm/>
-    <MoviesCardList/>
+    <SearchForm
+      handleSearchMovies={props.handleSearchMovies}
+      isShortMovies={props.isShortMovies}
+      handleShortMovies={props.handleShortMovies}
+    />
+    <MoviesCardList 
+      movies={props.movies}
+      handleSaveMovie={props.handleSaveMovie}
+      handleDeleteMovie={props.handleDeleteMovie}
+    />
   </section>
   )
 }
