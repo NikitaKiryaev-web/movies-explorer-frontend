@@ -1,14 +1,24 @@
-import './Login.css';
+import '../AuthForm/AuthForm.css';
 import {useValidationForm} from '../../hooks/useValidationForm';
-import AuthForm from '../AuthForm/AuthForm';
+import Logo from '../Logo/Logo';
+import {NavLink} from 'react-router-dom';
 
 function Login(props) {
 
   const {values, handleErrors, errors, isValid} = useValidationForm();
+
+  function handleLogin(e) {
+    e.preventDefault();
+    props.handleLogin(values.email, values.password);
+  }
   
   return (
-    <AuthForm title="Рады видеть!" btnText="Войти" tipText="Еще не зарегистрированы?" linkText="Регистрация" route="/signup">
-      <fieldset className="auth__fieldset login__fieldset">
+      <section className="auth">
+      <div className="auth__wrapper">
+        <Logo/>
+        <h2 className="auth__title">Рады видеть!</h2>
+        <form className="auth__form" onSubmit={handleLogin}>
+        <fieldset className="auth__fieldset login__fieldset">
         <label htmlFor="email" className="auth__label">E-mail
               <input
                 className="auth__input"
@@ -37,7 +47,11 @@ function Login(props) {
               <span className="auth__input-error">{errors.password}</span>
         </label>
       </fieldset>
-    </AuthForm>
+          <button className={`${isValid ? "auth__submit" : "auth__submit auth__submit_disabled"}`} disabled={!isValid} type="submit">Войти</button>
+        </form>
+        <p className="auth__tip">Ещё не зарегистрированы? <NavLink className="auth__link" activeClassName="register__link_active" to='/signup'>Регистрация</NavLink></p>
+      </div>
+    </section>
   )
 }
 

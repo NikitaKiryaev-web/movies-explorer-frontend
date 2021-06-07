@@ -39,6 +39,31 @@
   opacity: 0;
 }
 
+.hidden {
+  display: none;
+}
+
+.movies-list__no-saved-films {
+  color: white;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.movies-list__not-found {
+  color: white;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.movies-list__error {
+  color: white;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+}
+
 @media screen and (max-width: 768px) {
   .movies-list {
     padding: 70px 30px 0;

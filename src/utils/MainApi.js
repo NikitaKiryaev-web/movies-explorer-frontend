@@ -47,11 +47,11 @@ class MainApi {
       });
   };
 
-  getProfileInfo() {
+  getProfileInfo(token) {
     return fetch (`${this._url}/users/me`, {
       method: "GET",
       headers: {
-        authorization: this._token,
+        authorization: `Bearer ${token}`,
         "Content-Type": 'application/json'
       }
     })
@@ -60,13 +60,13 @@ class MainApi {
       });
   };
 
-  editProfileInfo(name, email) {
+  editProfileInfo(name, email, token) {
     return fetch(`${this._url}/users/me`, {
       method: "PATCH",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        authorization: this._token,
+        authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
         name,
@@ -78,13 +78,13 @@ class MainApi {
       });
   };
 
-   saveMovie(movie) {
+   saveMovie(movie, token) {
      return fetch(`${this._url}/movies`, {
        method: "POST",
        headers: {
          Accept: "application/json",
          "Content-Type": "application/json",
-         authorization: this._token,
+         authorization: `Bearer ${token}`,
        },
        body: JSON.stringify({
          director: movie.director,
@@ -105,13 +105,13 @@ class MainApi {
       });
    };
 
-   getSavedMovies() {
+   getSavedMovies(token) {
      return fetch(`${this._url}/movies`, {
        method: "GET",
        headers: {
          Accept: "application/json",
          "Content-Type": "application/json",
-         authorization: this._token,
+         authorization: `Bearer ${token}`,
        }
      })
       .then(res => {
@@ -119,13 +119,13 @@ class MainApi {
       });
    };
 
-   deleteMovie(movieId) {
+   deleteMovie(movieId, token) {
      return fetch(`${this._url}/movies/${movieId}`, {
        method: "DELETE",
        headers: {
          Accept: "application/json",
          "Content-Type": "application/json",
-         authorization: this._token,
+         authorization: `Bearer ${token}`,
        },
      })
       .then(res => {
@@ -135,8 +135,7 @@ class MainApi {
 }
 
 const mainApi = new MainApi({
-  url: "https://api.kiryaev.movies.nomoredomains.club",
-  token: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGI3ZjdkZDY0YjE4MWM0ZTBhY2IyOTQiLCJpYXQiOjE2MjI2NjkyODUsImV4cCI6MTYyMzI3NDA4NX0.nVm8KF-v821aPuvdTCPO7JLsxpugsbjMU8sSjtVaeSU`
+  url: "https://api.kiryaev.movies.nomoredomains.club"
 })
 
 export default mainApi;

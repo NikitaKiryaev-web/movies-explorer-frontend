@@ -4,6 +4,7 @@ import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MovieCardList/MovieCardList';
 
 function Movies(props) {
+
   return (
   <section className="movies">
     <SearchForm
@@ -13,6 +14,9 @@ function Movies(props) {
     />
     <MoviesCardList 
       movies={props.movies}
+      moviesError={props.moviesError}
+      notFound={props.notFound}
+      isLoading={props.isLoading}
       handleSaveMovie={props.handleSaveMovie}
       handleDeleteMovie={props.handleDeleteMovie}
     />

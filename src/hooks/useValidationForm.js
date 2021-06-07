@@ -11,7 +11,9 @@ function handleErrors(e) {
   setErrors({...errors, [name]: e.target.validationMessage});
   setValues({...values, [name]: value});
   setIsValid(e.target.closest('form').checkValidity());
+  console.log(errors);
+  console.log(values);
 }
 
-  return {values, errors, isValid, handleErrors};
+  return {values, setValues, errors, isValid, handleErrors};
 }
