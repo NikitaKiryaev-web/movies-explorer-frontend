@@ -5,7 +5,7 @@ import {NavLink} from 'react-router-dom';
 
 function Register(props) {
 
-  const {values, handleErrors, errors, isValid, onClick} = useValidationForm();
+  const {values, handleErrors, errors, isValid} = useValidationForm();
 
   function handleRegister(e) {
     e.preventDefault();

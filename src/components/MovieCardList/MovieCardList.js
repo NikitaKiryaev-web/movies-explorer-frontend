@@ -60,7 +60,7 @@ function MoviesCardList(props) {
     setInitialCardsAmount(prev => prev + addCardsAmount);
   }
 
-  const renderedMovies = props.movies.slice(0, initialCardsAmount);
+  const renderedMovies = props.movies && props.movies.slice(0, initialCardsAmount);
 
   useEffect(() => {
     window.addEventListener('resize', handleResize);
@@ -73,7 +73,7 @@ function MoviesCardList(props) {
       <span className={`movies-list__not-found ${props.notFound ? '' : 'hidden'}`}>Ничего не найдено :(</span>
       <span className={`movies-list__no-saved-films ${(props.isSavedMovies && props.movies.length === 0) ? '' : 'hidden'}`}>Вы ещё ничего не сохраняли</span>
       <ul className="movies-list__items">
-        {renderedMovies.map((movie) => {
+        {renderedMovies && renderedMovies.map((movie) => {
           return (
           <li className="movies-list__list-item" key={props.isSavedMovies ? movie.movieId : movie.id}>
             <MoviesCard 
@@ -86,7 +86,7 @@ function MoviesCardList(props) {
           )
         })}
       </ul>
-      <button className={props.isSavedMovies ? 'movies-list__add-btn movies-list__add-btn_disabled' : `movies-list__add-btn ${props.movies.length === renderedMovies.length ? ' movies-list__add-btn_disabled' : ''}`}
+      <button className={props.isSavedMovies ? 'movies-list__add-btn movies-list__add-btn_disabled' : `movies-list__add-btn ${props.movies && props.movies.length === renderedMovies.length ? ' movies-list__add-btn_disabled' : ''}`}
         onClick={handleAddMovies}
       >Ещё</button>
     </section>
